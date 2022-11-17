@@ -1,0 +1,44 @@
+---
+title: "ryx"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ryx}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(ryx)
+```
+
+# ryx
+The ryx package intends to make calculating and visualizing correlations easier.
+
+## print.ryx
+The print function prints out an object displaying the correlation, the p-values and the significance of the p-values of all the selected outcome variables against the response variable.
+```{r}
+data(mtcars)
+print(ryx(mtcars, y = "mpg", x = c("hp", "wt", "disp", "cyl", "am", "gear")))
+```
+
+
+## summary.ryx
+The summary function summarized in only a few sentences what variables your a correlating with your response variable. It displays the median, the range, the amount of statistically significant correlations, and all the variables involved the variables used.
+```{r}
+summary(ryx(mtcars, y = "mpg", x = c("hp", "wt", "disp", "cyl", "am", "gear")))
+```
+
+
+## plot.ryx
+The plot function displays the correlation of all the outcome variables against the response variable.
+```{r}
+plot(ryx(mtcars, y = "mpg", x = c("hp", "wt", "disp", "cyl", "am", "gear")))
+```
+
